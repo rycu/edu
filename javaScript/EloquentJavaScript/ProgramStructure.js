@@ -1,7 +1,7 @@
 //Program Structure Exercises
+console.log('--------------------------- Program Structure Exercises ---------------------------');
 
 
-// Looping a triangle
 // dP                                    oo                                    dP            oo                            dP          
 // 88                                                                          88                                          88          
 // 88        .d8888b. .d8888b.  88d888b. dP 88d888b. .d8888b.    .d8888b.    d8888P 88d888b. dP .d8888b. 88d888b. .d8888b. 88 .d8888b. 
@@ -9,7 +9,9 @@
 // 88        88.  .88 88.  .88  88.  .88 88 88    88 88.  .88    88.  .88      88   88       88 88.  .88 88    88 88.  .88 88 88.  ... 
 // 88888888P `88888P' `88888P'  88Y888P' dP dP    dP `8888P88    `88888P8      dP   dP       dP `88888P8 dP    dP `8888P88 dP `88888P' 
 // oooooooooooooooooooooooooooo~88~ooooooooooooooooooo~~~~.88~ooooooooooooooooooooooooooooooooooooooooooooooooooooo~~~~.88~oooooooooooo
-//                              dP                    d8888P                                                       d8888P              
+//                              dP                    d8888P                                                       d8888P           
+console.log('\n---------------------------\n Looping a triangle \n---------------------------');
+
 
 var hashes = '';
 
@@ -19,7 +21,7 @@ while (hashes.length < 7) {
 }
 
 
-// FizzBuzz
+
 //  88888888b oo                    888888ba                             
 //  88                              88    `8b                            
 // a88aaaa    dP d888888b d888888b a88aaaa8P' dP    dP d888888b d888888b 
@@ -27,7 +29,8 @@ while (hashes.length < 7) {
 //  88        88  .Y8P     .Y8P     88    .88 88.  .88  .Y8P     .Y8P    
 //  dP        dP d888888P d888888P  88888888P `88888P' d888888P d888888P 
 // oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
-//                                                                       
+//     
+console.log('\n---------------------------\n FizzBuzz \n---------------------------');
 
 var j = '';
 
@@ -43,7 +46,7 @@ for (var i = 1; i < 101; i++) {
 }
 
 
-// Chess board
+
 //  a88888b. dP                                     dP                                        dP 
 // d8'   `88 88                                     88                                        88 
 // 88        88d888b. .d8888b. .d8888b. .d8888b.    88d888b. .d8888b. .d8888b. 88d888b. .d888b88 
@@ -51,7 +54,8 @@ for (var i = 1; i < 101; i++) {
 // Y8.   .88 88    88 88.  ...       88       88    88.  .88 88.  .88 88.  .88 88       88.  .88 
 //  Y88888P' dP    dP `88888P' `88888P' `88888P'    88Y8888' `88888P' `88888P8 dP       `88888P8 
 // oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
-//                                                                                               
+//    
+console.log('\n---------------------------\n Chess board \n---------------------------');
 
 var j = '';
 

@@ -1,7 +1,7 @@
 //Functions Exercises
+console.log('--------------------------- Functions Exercises ---------------------------');
 
 
-//Minimum
 //8888ba.88ba  oo          oo                                
 //88  `8b  `8b                                               
 //88   88   88 dP 88d888b. dP 88d8b.d8b. dP    dP 88d8b.d8b. 
@@ -9,7 +9,8 @@
 //88   88   88 88 88    88 88 88  88  88 88.  .88 88  88  88 
 //dP   dP   dP dP dP    dP dP dP  dP  dP `88888P' dP  dP  dP 
 //ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
-//                                                           
+//
+console.log('\n---------------------------\n Minimum \n---------------------------');
 
 function customMin(a, b) {
     return a <= b ? a : b;
@@ -17,7 +18,7 @@ function customMin(a, b) {
 console.log(customMin(2, 6));
 
 
-//Recursion
+
 // 888888ba                                               oo                   
 // 88    `8b                                                                   
 //a88aaaa8P' .d8888b. .d8888b. dP    dP 88d888b. .d8888b. dP .d8888b. 88d888b. 
@@ -25,7 +26,8 @@ console.log(customMin(2, 6));
 // 88     88 88.  ... 88.  ... 88.  .88 88             88 88 88.  .88 88    88 
 // dP     dP `88888P' `88888P' `88888P' dP       `88888P' dP `88888P' dP    dP 
 //ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
-//                                                                             
+// 
+console.log('\n---------------------------\n Recursion \n---------------------------');
 
 function isEven(x) {
 
@@ -40,7 +42,7 @@ function isEven(x) {
 console.log(isEven(50));
 
 
-//Bean counting
+
 // 888888ba                                                                      dP   oo                   
 // 88    `8b                                                                     88                        
 //a88aaaa8P' .d8888b. .d8888b. 88d888b.    .d8888b. .d8888b. dP    dP 88d888b. d8888P dP 88d888b. .d8888b. 
@@ -49,6 +51,7 @@ console.log(isEven(50));
 // 88888888P `88888P' `88888P8 dP    dP    `88888P' `88888P' `88888P' dP    dP   dP   dP dP    dP `8888P88 
 //ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo~~~~.88~
 //                                                                                                 d8888P  
+console.log('\n---------------------------\n Bean counting \n---------------------------');
 
 function countChar(stringIn, charToMatch) {
     var counter = 0;
