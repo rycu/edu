@@ -153,5 +153,37 @@ console.log(nth2(arrayToList([6, 8, 10]), 1));
 //                             dP                                        dP 
 console.log('\n---------------------------\n Deep comparison \n---------------------------');
 
-// function deepEqual(value1, value2) {
-// }
+
+function deepEqual(value1, value2) {
+    if (typeof value1 === "object" && typeof value2 === "object") {
+
+        var propCount1 = 0;
+        var propCount2 = 0;
+
+        for (property in value1) {
+
+            propCount1 += 1;
+
+            if (!deepEqual(value1[property], value2[property])) {
+                return false;
+            }
+        }
+
+        for (property in value2) {
+            propCount2 += 1;
+        }
+
+        return propCount1 === propCount2;
+    } else if (value1 === value2) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+console.log(deepEqual(1, 1)); //true
+console.log(deepEqual(1, 2)); //false
+console.log(deepEqual({ test: 1, test2: 'X' }, { test: 1, test2: 'X' })); //true
+console.log(deepEqual({ test: 1, test2: 'X' }, { test: 1, test2: 'Y' })); //false
+console.log(deepEqual({ test: 1, test2: 'X' }, { test: 1, test3: 'X' })); //false
+console.log(deepEqual({ test: 1, test2: 'X' }, { test: 1, test2: 'X', test3: 'X' })); //false
