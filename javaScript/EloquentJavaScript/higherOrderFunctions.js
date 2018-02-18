@@ -41,8 +41,8 @@ var ANCESTRY_FILE = JSON.stringify([
 ])
 
 
-//Higher-Order Functions
-
+//Higher-Order Functions Exercises
+console.log('--------------------------- Higher-Order Functions ---------------------------');
 
 //Passing function
 function forEach(array, action) {
@@ -170,6 +170,7 @@ function map(array, transform) {
     return mapped;
 }
 
+
 var overNinety = ancestry.filter(function (person) {
 
     return person.died - person.born > 90;
@@ -181,7 +182,7 @@ console.log(map(overNinety, function (person) {
 //    "Maria Haverbeke"]
 
 
-//Summarizing with reduce
+//How reduce works
 function reduce(array, combine, start) {
     var current = start;
     for (var i = 0; i < array.length; i++)
@@ -193,7 +194,7 @@ console.log(reduce([1, 2, 3, 4], function (a, b) {
 }, 0));
 // → 10
 
-//more reduce
+//Using reduce
 console.log(ancestry.reduce(function (min, cur) {
     if (cur.born < min.born) return cur;
     else return min;
@@ -216,10 +217,19 @@ console.log(average(ancestry.filter(female).map(age)));
 
 
 
+//Full reduce examle
+console.log('reduceExample');
+
+var reduceExample = [1, 2, 3].reduce(
+
+    function (accumulator, currentValue, currentIndex, array) {
+
+        console.log('\naccumulator: ', accumulator, '\ncurrentValue: ', currentValue, '\ncurrentIndex: ', currentValue, '\narray: ', array);
 
 
-
-console.log('--------------------------- Higher-Order Functions ---------------------------');
+        return currentValue;
+    }
+);
 
 
 //  88888888b dP            dP     dP                     oo                   
@@ -232,3 +242,141 @@ console.log('--------------------------- Higher-Order Functions ----------------
 //                                                                     d8888P       
 console.log('\n---------------------------\n Flattening \n---------------------------');
 
+
+
+var arrayOfarrays = [[1, 2], [3, 4], [5, 6], [7, 8]];
+
+var flattened = arrayOfarrays.reduce(
+
+    function (accumulator, currentValue, currentIndex, array) {
+        return accumulator.concat(currentValue);
+    },
+    []
+);
+console.log(flattened);
+
+
+
+//8888ba.88ba             dP   dP                                           dP       oo dP       dP                                        dP oo .8888b .8888b                                                       
+//88  `8b  `8b            88   88                                           88          88       88                                        88    88   " 88   "                                                       
+//88   88   88 .d8888b. d8888P 88d888b. .d8888b. 88d888b.          .d8888b. 88d888b. dP 88 .d888b88    .d8888b. .d8888b. .d8888b.    .d888b88 dP 88aaa  88aaa  .d8888b. 88d888b. .d8888b. 88d888b. .d8888b. .d8888b. 
+//88   88   88 88'  `88   88   88'  `88 88ooood8 88'  `88 88888888 88'  `"" 88'  `88 88 88 88'  `88    88'  `88 88'  `88 88ooood8    88'  `88 88 88     88     88ooood8 88'  `88 88ooood8 88'  `88 88'  `"" 88ooood8 
+//88   88   88 88.  .88   88   88    88 88.  ... 88                88.  ... 88    88 88 88 88.  .88    88.  .88 88.  .88 88.  ...    88.  .88 88 88     88     88.  ... 88       88.  ... 88    88 88.  ... 88.  ... 
+//dP   dP   dP `88888P'   dP   dP    dP `88888P' dP                `88888P' dP    dP dP dP `88888P8    `88888P8 `8888P88 `88888P'    `88888P8 dP dP     dP     `88888P' dP       `88888P' dP    dP `88888P' `88888P' 
+//ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo~~~~.88~oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+//                                                                                                               d8888P                                                                                              
+console.log('\n---------------------------\n Mother-child age difference \n---------------------------');
+
+var byName = {};
+ancestry.forEach(function (person) {
+    byName[person.name] = person;
+});
+
+function average(array) {
+    function plus(a, b) { return a + b; }
+    return array.reduce(plus) / array.length;
+}
+
+var ageDifferences = ancestry.reduce(
+    function (accumulator, currentValue) {
+        if (byName[currentValue.mother]) {
+            var childBorn = currentValue.born;
+            var motherBorn = byName[currentValue.mother].born
+            accumulator.push(childBorn - motherBorn);
+        }
+        return accumulator;
+    },
+    []
+);
+
+//GIVEN SOLUTION CHAINS FILTER AND MAP
+// var differences = ancestry.filter(function(person) {
+//     return byName[person.mother] != null;
+//   }).map(function(person) {
+//     return person.born - byName[person.mother].born;
+//   });
+
+console.log(average(ageDifferences));
+
+
+
+//dP     dP  oo            dP                     oo                   dP    dP        oo .8888b              88888888b                                        dP                                       
+//88     88                88                                          88    88           88   "              88                                               88                                       
+//88aaaaa88a dP .d8888b. d8888P .d8888b. 88d888b. dP .d8888b. .d8888b. 88    88        dP 88aaa  .d8888b.    a88aaaa    dP.  .dP  88d888b. .d8888b. .d8888b. d8888P .d8888b. 88d888b. .d8888b. dP    dP 
+//88     88  88 Y8ooooo.   88   88'  `88 88'  `88 88 88'  `"" 88'  `88 88    88        88 88     88ooood8     88         `8bd8'   88'  `88 88ooood8 88'  `""   88   88'  `88 88'  `88 88'  `"" 88    88 
+//88     88  88       88   88   88.  .88 88       88 88.  ... 88.  .88 88    88        88 88     88.  ...     88         .d88b.   88.  .88 88.  ... 88.  ...   88   88.  .88 88    88 88.  ... 88.  .88 
+//dP     dP  dP `88888P'   dP   `88888P' dP       dP `88888P' `88888P8 dP    88888888P dP dP     `88888P'     88888888P dP'  `dP  88Y888P' `88888P' `88888P'   dP   `88888P8 dP    dP `88888P' `8888P88 
+//ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo~88~ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo~~~~.88~
+//                                                                                                                                dP                                                            d8888P  
+console.log('\n---------------------------\n Historical Life Expectancy \n---------------------------');
+
+
+function assignedCentury(personName) {
+    return Math.ceil(byName[personName].died / 100);
+}
+
+function groupBy(array, assignedCentury) {
+    var centuries = {};
+
+    array.forEach(
+        function (e) {
+            var century = assignedCentury(e.name);
+            if (centuries[century]) {  // or century in centuries
+                centuries[century].push(e.died - e.born);
+            } else {
+                centuries[century] = [e.died - e.born];
+            }
+        }
+    );
+    return centuries;
+}
+
+var data = groupBy(ancestry, assignedCentury);
+for (e in data) {
+    console.log(e, "th : ", average(data[e]));
+}
+
+
+// 88888888b                                         .d888888                 dP    d888888P dP                            .d88888b                               
+// 88                                               d8'    88                 88       88    88                            88.    "'                              
+//a88aaaa    dP   .dP .d8888b. 88d888b. dP    dP    88aaaaa88a 88d888b. .d888b88       88    88d888b. .d8888b. 88d888b.    `Y88888b. .d8888b. 88d8b.d8b. .d8888b. 
+// 88        88   d8' 88ooood8 88'  `88 88    88    88     88  88'  `88 88'  `88       88    88'  `88 88ooood8 88'  `88          `8b 88'  `88 88'`88'`88 88ooood8 
+// 88        88 .88'  88.  ... 88       88.  .88    88     88  88    88 88.  .88       88    88    88 88.  ... 88    88    d8'   .8P 88.  .88 88  88  88 88.  ... 
+// 88888888P 8888P'   `88888P' dP       `8888P88    88     88  dP    dP `88888P8       dP    dP    dP `88888P' dP    dP     Y88888P  `88888P' dP  dP  dP `88888P' 
+//ooooooooooooooooooooooooooooooooooooooo~~~~.88~ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+//                                       d8888P                                                                                                                   
+console.log('\n---------------------------\n Every And Then Some \n---------------------------');
+
+
+//Every example
+function isBelowThreshold(currentValue) {
+    return currentValue < 40;
+}
+var array1 = [1, 30, 18, 29, 10, 13];
+console.log(array1.every(isBelowThreshold));
+
+//Every Exercise
+function every(array, condition) {
+    for (var i = 0; i < array.length; i++) {
+        if (!condition(array[i])) {
+            return false;
+        }
+    }
+    return true;
+}
+console.log(every(array1, isBelowThreshold));
+
+
+//Some Exercise
+function some(array, condition) {
+    for (var i = 0; i < array.length; i++) {
+        if (condition(array[i])) {
+            return true;
+        }
+    }
+    return false;
+}
+
+var array2 = [30, 40, 50, 60, 70, 80, 90];
+console.log(array2.some(isBelowThreshold));
+console.log(some(array2, isBelowThreshold));
