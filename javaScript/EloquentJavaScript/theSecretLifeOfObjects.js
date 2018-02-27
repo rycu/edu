@@ -19,14 +19,38 @@ function Vector(x, y) {
 
 Vector.prototype.plus = function (vectorIn) {
     return new Vector(this.x + vectorIn.x, this.y + vectorIn.y);
-
 };
+
 Vector.prototype.minus = function (vectorIn) {
     return new Vector(this.x - vectorIn.x, this.y - vectorIn.y);
 };
 
 //Add getter
-
-
 console.log(new Vector(2, 2).plus(new Vector(2, 2)));
 console.log(new Vector(4, 4).minus(new Vector(2, 2)));
+
+
+//Class solution
+
+class Vector2 {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    plus(vectorIn) {
+        return new Vector2(this.x + vectorIn.x, this.y + vectorIn.y);
+    }
+
+    minus(other) {
+        return new Vector2(this.x - vectorIn.x, this.y - vectorIn.y);
+    }
+
+    get length() {
+        return Math.sqrt(this.x * this.x + this.y * this.y);
+    }
+}
+
+console.log(new Vector2(2, 2).plus(new Vector2(2, 2)));
+console.log(new Vector2(4, 4).minus(new Vector2(2, 2)));
+console.log(new Vector2(4, 4).length);
