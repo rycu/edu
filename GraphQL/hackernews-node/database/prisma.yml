@@ -11,3 +11,8 @@ datamodel: datamodel.graphql
 secret: mysecret123
 #cluster: public-iridescentmouse-103/prisma-eu1
 endpoint: https://eu1.prisma.sh/public-iridescentmouse-103/hackernews-node/dev
+
+hooks:
+  post-deploy:
+    - graphql get-schema --project database
+    - graphql prepare
