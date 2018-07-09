@@ -11,4 +11,4 @@ secret: mysecret123
 # the file path pointing to your data model
 datamodel: datamodel.graphql
 
-cluster: public-charmpainter-619/prisma-eu1
+cluster: public-inkwatcher-330/prisma-eu1
